@@ -1,17 +1,18 @@
 using MonClick.Code.Enemies;
+using MonClick.Code.HealthSystem;
 using MonClick.Code.PlayerInput;
 using System;
 using UnityEngine;
 using Zenject;
 
-namespace MonClick.Code.Player
+namespace MonClick.Code.PlayerControl
 {
     public class PlayerInputController : MonoBehaviour
     {
         [SerializeField] private float _attackCooldown = 1.0f;
         private InputHandler _inputHandler;
 
-        public event Action<Enemy> EnemyAttackRequest;
+        public event Action<IDamagable> EnemyAttackRequest;
         private DateTime _previousAttackTime;
 
         [Inject]
@@ -21,7 +22,7 @@ namespace MonClick.Code.Player
             _inputHandler.OnEnemyClicked += EnemyClicked;
         }
 
-        private void EnemyClicked(Enemy enemy)
+        private void EnemyClicked(IDamagable enemy)
         {
             if (_previousAttackTime.AddSeconds(_attackCooldown) < DateTime.Now)
             {

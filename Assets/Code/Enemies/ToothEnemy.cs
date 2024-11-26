@@ -5,21 +5,22 @@ namespace MonClick.Code.Enemies
 {
     public class ToothEnemy : Enemy
     {
-        public override void Attack()
+        protected override void Attack()
         {
 
         }
 
-        public override void Go()
+        protected override void Go()
         {
 
         }
 
-        public override void Update()
+        protected override void Update()
         {
             transform.Translate(Vector3.right * _normalSpeed * Time.deltaTime);
 
         }
+
     }
 
 }

@@ -1,17 +1,16 @@
+
 using MonClick.Code.HealthSystem;
 using UnityEngine;
 
 namespace MonClick.Code.PlayerInput
 {
-    public class MouseInputHandler : InputHandler
+    public class TouchInputHandler : InputHandler
     {
         public override void Handle()
         {
-            var touchPos = Input.mousePosition;
-
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+            if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
             {
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.touches[0].position), Vector2.zero);
 
                 if (hit.collider != null && hit.collider.tag != "PlayerBase")
                 {
@@ -25,4 +24,3 @@ namespace MonClick.Code.PlayerInput
         }
     }
 }
-

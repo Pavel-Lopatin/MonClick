@@ -1,23 +1,44 @@
+using MonClick.Code.HealthSystem;
 using UnityEngine;
 
 namespace MonClick.Code.Enemies
 {
     public abstract class Enemy : MonoBehaviour
     {
-        [SerializeField] protected int _health;
-        [SerializeField] protected float _attackValue;
+        [SerializeField] protected int _maxHealth;
+        [SerializeField] protected int _attackValue;
         [SerializeField] protected float _normalSpeed;
+        [SerializeField] protected HealthController _healthController;
 
-        protected void Init(int health, float attackValue)
+        private void Awake()
         {
-            _health = health;
-            _attackValue = attackValue;
+            Init();
         }
 
-        public abstract void Go();
-        public abstract void Attack();
-        public abstract void Update();
+        protected void Init()
+        {
+            _healthController.Init(_maxHealth);
+        }
 
+        protected abstract void Go();
+        protected abstract void Attack();
+        protected abstract void Update();
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            IDamagable playerBase = collision.gameObject.GetComponent<IDamagable>();
+
+            if (playerBase != null)
+            {
+                playerBase.GetDamage(_attackValue);
+                _healthController.TryDeath();
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (_healthController == null) _healthController = GetComponent<HealthController>();
+        }
     }
 
 }

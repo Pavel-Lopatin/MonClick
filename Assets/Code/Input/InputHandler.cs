@@ -1,14 +1,15 @@
 using MonClick.Code.Enemies;
+using MonClick.Code.HealthSystem;
 using System;
 
 namespace MonClick.Code.PlayerInput
 {
     public abstract class InputHandler
     {
-        public event Action<Enemy> OnEnemyClicked;
+        public event Action<IDamagable> OnEnemyClicked;
         public abstract void Handle();
 
-        protected void SendEnemyClicked(Enemy enemy)
+        protected void SendEnemyClicked(IDamagable enemy)
         {
             OnEnemyClicked?.Invoke(enemy);
         }
