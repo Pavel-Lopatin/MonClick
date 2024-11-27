@@ -61,6 +61,14 @@ namespace MonClick.Code.Pool
             return false;
         }
 
+        public void DisableAllElements()
+        {
+            foreach (var mono in _pool)
+            {
+                mono.gameObject.SetActive(false);
+            }
+        }
+
         public T GetFreeElement()
         {
             if (HasFreeElement(out var element))

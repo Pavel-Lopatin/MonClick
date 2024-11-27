@@ -17,6 +17,7 @@ namespace MonClick.Code.EnemyFabric
         public void Init()
         {
             enemyPool = new PoolMono<Enemy>(_enemyPrefab, _poolCount, _poolContainer);
+            enemyPool._autoExpand = this._autoExpand;
         }
 
         public void CreateEnemy(Transform spawnPoint)
@@ -24,6 +25,11 @@ namespace MonClick.Code.EnemyFabric
             var newEnemy = enemyPool.GetFreeElement();
             newEnemy.transform.position = spawnPoint.position;
 
+        }
+
+        public void DisableAllObjectsInPool()
+        {
+            enemyPool.DisableAllElements();
         }
     }
 }

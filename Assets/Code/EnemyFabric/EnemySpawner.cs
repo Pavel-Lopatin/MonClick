@@ -16,22 +16,26 @@ namespace MonClick.Code.EnemyFabric
         [SerializeField] private int maxSpawnCount;
         [SerializeField] private List<Enemy> enemiesList;
 
+        private IEnumerator spawnRoutine;
+
         private void Awake()
         {
             pool.Init();
+            spawnRoutine = SpawnEnemiesCoroutine();
         }
 
         public void StartSpawnEnemies()
         {
-            StartCoroutine(SpawnEnemies());
+            pool.DisableAllObjectsInPool();
+            StartCoroutine(spawnRoutine);
         }
 
         public void StopSpawnEnemies()
         {
-            StopCoroutine(SpawnEnemies());
+            StopCoroutine(spawnRoutine);
         }
 
-        private IEnumerator SpawnEnemies()
+        private IEnumerator SpawnEnemiesCoroutine()
         {
             int spawnCount = 0;
 
