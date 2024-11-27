@@ -7,6 +7,7 @@ namespace MonClick.Code.EnemyFabric
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField] private EnemyPoolController pool;
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private Enemy[] enemies;
 
@@ -15,16 +16,19 @@ namespace MonClick.Code.EnemyFabric
         [SerializeField] private int maxSpawnCount;
         [SerializeField] private List<Enemy> enemiesList;
 
+        private void Awake()
+        {
+            pool.Init();
+        }
+
         public void StartSpawnEnemies()
         {
             StartCoroutine(SpawnEnemies());
-            Debug.Log("Start Spawn Enemies");
         }
 
         public void StopSpawnEnemies()
         {
             StopCoroutine(SpawnEnemies());
-            Debug.Log("Finish Spawn Enemies");
         }
 
         private IEnumerator SpawnEnemies()
@@ -37,13 +41,15 @@ namespace MonClick.Code.EnemyFabric
                 var enemy = enemies[Random.Range(0, enemies.Length)];
                 var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-                Enemy newEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-                enemiesList.Add(newEnemy);
-
+                pool.CreateEnemy(spawnPoint);
                 yield return new WaitForSeconds(spawnSpeed);
             }
 
-            Debug.Log("Finish Spawn Enemies");
+        }
+
+        private void OnValidate()
+        {
+            pool ??= pool = GetComponentInChildren<EnemyPoolController>();
         }
     }
 }

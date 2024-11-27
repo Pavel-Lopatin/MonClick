@@ -96,8 +96,8 @@ MonoBehaviour:
   _textPrefab: {fileID: 3776925086100600090, guid: fbb8c10aac091b944b588a71be9bed5a, type: 3}
   _spawn: {fileID: 5443875223315616604}
   _root: {fileID: 5443875223315616604}
-  _flyLength: 100
-  _flyTime: 3
+  _flyLength: 1000
+  _flyTime: 5
 --- !u!1 &1689452266803707816
 GameObject:
   m_ObjectHideFlags: 0
