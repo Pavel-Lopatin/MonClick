@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace MonClick.Code.HealthSystem
 {
-    public class HealthController : MonoBehaviour, IDamagable
+    public abstract class HealthController : MonoBehaviour, IDamagable
     {
-        private int _maxHealth;
-        private int _currentHealth;
+        protected int _maxHealth;
+        protected int _currentHealth;
 
         public event Action OnDeath;
-        public event Action<int> OnDamaged; 
+        public event Action<int> OnDamaged;
 
         public void Init(int maxHealth)
         {
@@ -37,11 +37,12 @@ namespace MonClick.Code.HealthSystem
             if (_currentHealth <= 0) Death();
         }
 
-        private void Death()
+        protected virtual void Death()
         {
             OnDeath?.Invoke();
-            Destroy(gameObject);
         }
+
+        public abstract void ResetHealth();
     }
 }
 

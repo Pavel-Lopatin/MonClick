@@ -7,7 +7,10 @@ namespace MonClick.Code.PlayerControl
     public class PlayerBase : MonoBehaviour
     {
         [SerializeField] protected int _maxHealth;
-        [SerializeField] private HealthController _healthController;
+        [SerializeField] private HealthControllerPlayerBase _healthController;
+
+        [SerializeField] protected SpriteRenderer _spriteRenderer;
+        [SerializeField] protected Collider2D _collider;
 
         public event Action OnBaseDestroyed;
 
@@ -22,14 +25,35 @@ namespace MonClick.Code.PlayerControl
             _healthController.OnDeath += BaseDestroyed;
         }
 
-        private void OnValidate()
+        public void DisableBase()
         {
-            if (_healthController == null) _healthController = GetComponent<HealthController>();
+            _collider.enabled = false;
+            _spriteRenderer.enabled = false;
+        }
+
+        public void EnableBase()
+        {
+            _collider.enabled = true;
+            _spriteRenderer.enabled = true;
+            ResetBaseHealth();
         }
 
         public void BaseDestroyed()
         {
+            DisableBase();
             OnBaseDestroyed?.Invoke();
+        }
+
+        private void ResetBaseHealth()
+        {
+            _healthController.ResetHealth();
+        }
+
+        private void OnValidate()
+        {
+            _healthController ??= _healthController = GetComponent<HealthControllerPlayerBase>();
+            _spriteRenderer ??= _spriteRenderer = GetComponent<SpriteRenderer>();
+            _collider ??= _collider = GetComponent<Collider2D>();
         }
     }
 }

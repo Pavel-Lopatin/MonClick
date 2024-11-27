@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 8434829507328768642}
   - component: {fileID: 3056552247178641308}
   - component: {fileID: 8984366128511294229}
-  - component: {fileID: 6353978768481867727}
+  - component: {fileID: 5734884625079479979}
   m_Layer: 0
   m_Name: EyeBallMonsterPrefab_T1
   m_TagString: Untagged
@@ -156,7 +156,7 @@ MonoBehaviour:
   _maxHealth: 1
   _attackValue: 4
   _normalSpeed: 4
-  _healthController: {fileID: 6353978768481867727}
+  _healthController: {fileID: 5734884625079479979}
 --- !u!61 &8984366128511294229
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2514224, y: 1.1867914}
   m_EdgeRadius: 0
---- !u!114 &6353978768481867727
+--- !u!114 &5734884625079479979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,6 +211,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5139326344934532556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c1e5c75c6f41041bc651114ba3d399, type: 3}
+  m_Script: {fileID: 11500000, guid: 74a20e043edd6ae418fa8c4ede7b1b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

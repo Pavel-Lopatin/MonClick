@@ -28,6 +28,7 @@ namespace MonClick.Code.GameServices
         private void StartGame()
         {
             _spawner.StartSpawnEnemies();
+            _playerBase.EnableBase();
             OnGameStarted?.Invoke();
         }
 

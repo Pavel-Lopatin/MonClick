@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4819356104150029179}
   - component: {fileID: 2624107314510860155}
   - component: {fileID: 7587750387184428075}
-  - component: {fileID: 2863124863886388585}
+  - component: {fileID: 8472439779635172762}
   m_Layer: 0
   m_Name: TrashMonsterPrefab_T1
   m_TagString: Untagged
@@ -156,7 +156,7 @@ MonoBehaviour:
   _maxHealth: 3
   _attackValue: 4
   _normalSpeed: 2
-  _healthController: {fileID: 2863124863886388585}
+  _healthController: {fileID: 8472439779635172762}
 --- !u!61 &7587750387184428075
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.949792, y: 2.2221727}
   m_EdgeRadius: 0
---- !u!114 &2863124863886388585
+--- !u!114 &8472439779635172762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,6 +211,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8943249529842959710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c1e5c75c6f41041bc651114ba3d399, type: 3}
+  m_Script: {fileID: 11500000, guid: 74a20e043edd6ae418fa8c4ede7b1b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
