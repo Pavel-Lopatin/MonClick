@@ -1,5 +1,6 @@
 using MonClick.Code.Enemies;
 using MonClick.Code.HealthSystem;
+using MonClick.Code.UI;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,7 @@ namespace MonClick.Code.PlayerControl
         [SerializeField] private int _damage;
 
         // add visualizer
+        [Inject] private DamageVisualizer _damageVisualizer;
 
         private void Awake()
         {
@@ -24,6 +26,11 @@ namespace MonClick.Code.PlayerControl
 
         private void Attack(IDamagable enemy)
         {
+            var damage = (-_damage).ToString();
+
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.GetPosition().position);
+
+            _damageVisualizer.Visualize(damage.ToString(), screenPos);
             enemy.GetDamage(_damage);
         }
 

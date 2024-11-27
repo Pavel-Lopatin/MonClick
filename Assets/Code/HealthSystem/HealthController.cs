@@ -17,6 +17,11 @@ namespace MonClick.Code.HealthSystem
             _currentHealth = _maxHealth;
         }
 
+        public Transform GetPosition()
+        {
+            return transform;
+        }
+
         public void GetDamage(int value)
         {
             CheckHealth(value);
@@ -43,6 +48,7 @@ namespace MonClick.Code.HealthSystem
         }
 
         public abstract void ResetHealth();
+
     }
 }
 

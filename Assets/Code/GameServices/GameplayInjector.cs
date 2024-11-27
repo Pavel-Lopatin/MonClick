@@ -14,6 +14,7 @@ namespace MonClick.Code.GameServices
         [SerializeField] private GameUI _gameUI;
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private GameController _gameController;
+        [SerializeField] private DamageVisualizer _damageVisualizer;
 
         public override void InstallBindings()
         {
@@ -25,6 +26,7 @@ namespace MonClick.Code.GameServices
             Container.Bind<GameUI>().FromInstance(_gameUI);
             Container.Bind<EnemySpawner>().FromInstance(_enemySpawner);
             Container.Bind<GameController>().FromInstance(_gameController);
+            Container.Bind<DamageVisualizer>().FromInstance(_damageVisualizer);
         }
 
 
