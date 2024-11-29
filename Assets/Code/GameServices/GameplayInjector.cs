@@ -27,6 +27,8 @@ namespace MonClick.Code.GameServices
             Container.Bind<EnemySpawner>().FromInstance(_enemySpawner);
             Container.Bind<GameController>().FromInstance(_gameController);
             Container.Bind<DamageVisualizer>().FromInstance(_damageVisualizer);
+
+            Application.targetFrameRate = 60;
         }
 
 

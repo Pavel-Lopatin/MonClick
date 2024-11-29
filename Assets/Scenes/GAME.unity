@@ -637,6 +637,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5060396677666490180, guid: 41617a1eb9ac57744a236aeb86cc9122, type: 3}
+      propertyPath: _enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060396677666490180, guid: 41617a1eb9ac57744a236aeb86cc9122, type: 3}
+      propertyPath: _enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2624107314510860155, guid: e4199e8a81283e143a527acee2fc63bd, type: 3}
+    - target: {fileID: 5060396677666490180, guid: 41617a1eb9ac57744a236aeb86cc9122, type: 3}
+      propertyPath: _enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3056552247178641308, guid: d4802e9f2e8e58c4487ed45bb14f8f08, type: 3}
     - target: {fileID: 8329346202624590966, guid: 41617a1eb9ac57744a236aeb86cc9122, type: 3}
       propertyPath: m_Name
       value: EnemySpawner

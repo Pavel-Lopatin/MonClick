@@ -9,7 +9,6 @@ namespace MonClick.Code.EnemyFabric
     {
         [SerializeField] private EnemyPoolController pool;
         [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private Enemy[] enemies;
 
         [SerializeField, Tooltip("Time in seconds btwn spawn")]
         private float spawnSpeed;
@@ -42,10 +41,12 @@ namespace MonClick.Code.EnemyFabric
             while (spawnCount < maxSpawnCount)
             {
                 spawnCount++;
-                var enemy = enemies[Random.Range(0, enemies.Length)];
+
                 var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-                pool.CreateEnemy(spawnPoint);
+                int randomEnemy = Random.Range(0, pool.PoolsCount);
+
+               
                 yield return new WaitForSeconds(spawnSpeed);
             }
 
